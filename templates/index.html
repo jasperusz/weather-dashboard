@@ -14,5 +14,13 @@
         <input type="text" id="city_name" name="city_name" required>
         <input type="submit" value="Search">
     </form>
+    <p>{{ city_name }}</p>
+    {% if city_weather %}
+    <p> Temperature: {{ city_weather.temperature | round(1) }}ºC</p>
+    <p> Max. Temperature: {{ city_weather.max_temp | round(1) }}ºC</p>
+    <p> Min. Temperature: {{ city_weather.min_temp | round(1) }}ºC</p>
+    <p> Humidity: {{ city_weather.humidity }}%</p>
+    <p> Wind Speed: {{ city_weather.winds }} m/s</p>
+    {% endif %}
 </body>
 </html>

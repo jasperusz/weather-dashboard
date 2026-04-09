@@ -13,7 +13,7 @@ def index():
 def get_weather():
     city_name = request.args.get('city_name')
     city_weather = get_weather_data(city_name)
-    return f'Weather Conditions from City {city_name}: {city_weather}'
+    return render_template('index.html', city_name=city_name, city_weather=city_weather)
 
 if __name__ == '__main__':
     app.run(debug=True)
