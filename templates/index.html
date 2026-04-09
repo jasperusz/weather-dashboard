@@ -12,22 +12,22 @@
 <body>
     <div id="main-content">
         <div id="feature-box">
-            <h1>Weatherio</h1>
+            <h1>Weather Dashboard</h1>
             <div id="search-box">
                 <form action="/weather" method="GET">
                     <label for="city_name">Search City:</label>
                     <input type="text" id="city_name" name="city_name" required>
-                    <input type="submit" value="Search">
+                    <input type="submit" value="SEARCH">
                 </form>
             </div>
             <div id="weather-results">
                 <p>{{ city_name }}</p>
                 {% if city_weather %}
-                <p> Temperature: {{ city_weather.temperature | round(1) }}ºC</p>
-                <p> Max. Temperature: {{ city_weather.max_temp | round(1) }}ºC</p>
-                <p> Min. Temperature: {{ city_weather.min_temp | round(1) }}ºC</p>
-                <p> Humidity: {{ city_weather.humidity }}%</p>
-                <p> Wind Speed: {{ city_weather.winds }} m/s</p>
+                <p> <strong>Temperature:</strong> {{ city_weather.temperature | round(1) }}ºC</p>
+                <p> <strong>Min. Temperature:</strong> {{ city_weather.min_temp | round(1) }}ºC</p>
+                <p> <strong>Max. Temperature:</strong> {{ city_weather.max_temp | round(1) }}ºC</p>
+                <p> <strong>Humidity:</strong> {{ city_weather.humidity }}%</p>
+                <p> <strong>Wind Speed:</strong> {{ city_weather.winds }} m/s</p>
                 {% endif %}
             </div>
         </div>

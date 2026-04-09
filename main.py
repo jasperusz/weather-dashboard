@@ -10,12 +10,13 @@ def get_weather_data(city):
     response = requests.get(API_URL)
     print(response)
     if response.status_code == 200:
-        dados = response.json()
-        temperature = dados['main']['temp']
-        min_temp = dados['main']['temp_min']
-        max_temp = dados['main']['temp_max']
-        humidity = dados['main']['humidity']
-        winds = dados['wind']['speed']
+        weather_data = response.json()
+        temperature = weather_data['main']['temp']
+        humidity = weather_data['main']['humidity']
+        winds = weather_data['wind']['speed']
+        min_temp = weather_data['main']['temp_min']
+        max_temp = weather_data['main']['temp_max']
+
         return {
             'temperature': temperature,
             'min_temp': min_temp,
@@ -25,4 +26,3 @@ def get_weather_data(city):
         }
     else:
         return None
-    

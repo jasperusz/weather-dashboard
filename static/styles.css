@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
 }
-
+/* Background and containers sizing */
 body{
     background-color: #20A4F3;
     display: flex;
@@ -19,10 +19,91 @@ body{
     max-width: 100vh;
     max-height: 100%;
 }
-
+/* App container adjustments */
 #feature-box {
     width: 1000px;
     height: 800px;
     background-color: #FCFFF7;
     border-radius: 12px;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+}
+
+#search-box{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+#search-box form{
+    display: flex; 
+    align-items: center; 
+    gap: 10px;
+    width: 80%;
+}
+
+#city_name {
+    flex: 1; /* O "segredo" para a caixa aumentar de tamanho */
+    padding: 12px;
+    font-size: 18px;
+    border: 2px solid #20A4F3;
+    border-radius: 8px;
+    outline: none;
+}
+
+input[type="submit"] {
+    padding: 12px 25px;
+    font-size: 18px;
+    background-color: #20A4F3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #1a8cd1;
+}
+
+label {
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+/* Font formatting and reveal animation */
+#weather-results, p {
+    display: flex;
+    justify-content: space-between;
+    justify-self: center;
+    flex-direction: column;
+    animation: slideInReveal 0.8s ease-out forwards;
+    opacity: 0;
+    font-size: 24px;
+
+}
+/* Each line revealing in a different delay */
+#weather-results p:nth-child(1) { animation-delay: 0.1s; }
+#weather-results p:nth-child(2) { animation-delay: 0.3s; }
+#weather-results p:nth-child(3) { animation-delay: 0.5s; }
+#weather-results p:nth-child(4) { animation-delay: 0.7s; }
+#weather-results p:nth-child(5) { animation-delay: 0.9s; }
+#weather-results p:nth-child(6) { animation-delay: 1.2s; }
+
+/* Animation keyframe */
+@keyframes slideInReveal {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
