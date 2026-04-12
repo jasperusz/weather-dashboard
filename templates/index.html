@@ -21,13 +21,14 @@
                 </form>
             </div>
             <div id="weather-results">
-                <p>{{ city_name }}</p>
+                
                 {% if city_weather %}
-                <p> <strong>Temperature:</strong> {{ city_weather.temperature | round(1) }}ºC</p>
-                <p> <strong>Min. Temperature:</strong> {{ city_weather.min_temp | round(1) }}ºC</p>
-                <p> <strong>Max. Temperature:</strong> {{ city_weather.max_temp | round(1) }}ºC</p>
-                <p> <strong>Humidity:</strong> {{ city_weather.humidity }}%</p>
-                <p> <strong>Wind Speed:</strong> {{ city_weather.winds }} m/s</p>
+                <div class="card" id="city"><p>{{ city_name }}</p>
+                    <p><img src="https://flagcdn.com/w40/{{ city_weather.city_country | lower }}.png" alt="country-icon"></p></div>
+                <div class="card"><p> <strong>Temperature:</strong> {{ city_weather.temperature | round(1) }}ºC <img src="https://openweathermap.org/img/wn/{{ city_weather.weather_icon }}@2x.png" alt="weather-icon"></p></div>
+                <div class="card"><p> <strong>Weather Condition:</strong> {{ city_weather.weather_description | capitalize }}</p></div>
+                <div class="card"><p> <strong>Humidity:</strong> {{ city_weather.humidity }}%</p></div>
+                <div class="card"><p> <strong>Wind Speed:</strong> {{ city_weather.winds }} m/s</p></div>
                 {% endif %}
             </div>
         </div>

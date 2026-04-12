@@ -16,13 +16,19 @@ def get_weather_data(city):
         winds = weather_data['wind']['speed']
         min_temp = weather_data['main']['temp_min']
         max_temp = weather_data['main']['temp_max']
+        weather_description = weather_data['weather'][0]['description']
+        weather_icon = weather_data['weather'][0]['icon']
+        city_country = weather_data['sys']['country']
 
         return {
             'temperature': temperature,
             'min_temp': min_temp,
             'max_temp': max_temp,
             'humidity': humidity,
-            'winds': winds
+            'winds': winds,
+            'weather_description': weather_description,
+            'weather_icon': weather_icon,
+            'city_country': city_country
         }
     else:
         return None

@@ -21,10 +21,12 @@ body{
 }
 /* App container adjustments */
 #feature-box {
-    width: 1000px;
-    height: 800px;
+    width: 800px;
+    height: 400px;
+    padding: 30px;
     background-color: #FCFFF7;
     border-radius: 12px;
+    box-sizing: border-box;
 }
 
 h1{
@@ -76,18 +78,45 @@ label {
     font-size: 20px;
 }
 
+/* Weather Results Appearence */
+#weather-results{
+    display: flex;
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.card{
+    display: flex;
+    height: 120px;
+    width: 150px;
+}
+
+.card#city{
+    display: flex;
+    flex-direction: column;
+    height: 30px;
+}
+
+.card#city img{
+    height: 30px;
+}
 
 /* Font formatting and reveal animation */
-#weather-results, p {
-    display: flex;
-    justify-content: space-between;
-    justify-self: center;
-    flex-direction: column;
+#weather-results p {
     animation: slideInReveal 0.8s ease-out forwards;
     opacity: 0;
-    font-size: 46px;
-
+    font-size: 24px;
+    text-align: center;
 }
+
+/* WeatherIcon Size */
+#weather-results img{
+    width: 40px;
+    height: 40px;
+}
+
 /* Each line revealing in a different delay */
 #weather-results p:nth-child(1) { animation-delay: 0.1s; }
 #weather-results p:nth-child(2) { animation-delay: 0.3s; }
