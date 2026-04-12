@@ -85,7 +85,7 @@ label {
     flex-direction: column;
     animation: slideInReveal 0.8s ease-out forwards;
     opacity: 0;
-    font-size: 24px;
+    font-size: 46px;
 
 }
 /* Each line revealing in a different delay */
