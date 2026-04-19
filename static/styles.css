@@ -17,6 +17,12 @@ body{
     min-height: 100vH;
 }
 
+/* Background Night Theme Colors */
+body.night-theme{
+    background: linear-gradient(-45deg, #051923, #003554, #324a5f, #a69cac);
+    background-size: 400% 400%;
+}
+
 @keyframes gradientBG {
     0% {background-position: 0% 50%;}
     50% {background-position: 100% 50%;}
@@ -33,8 +39,26 @@ body{
     height: 400px;
     padding: 30px;
     background-color: #FCFFF7;
+    color: #324a5f;
     border-radius: 12px;
     box-sizing: border-box;
+}
+
+/* Feature box Night Theme Colors */
+body.night-theme #feature-box{
+    background-color: #324a5f;
+    color: #20A4F3;
+}
+
+/* Night/Light mode adjustments */
+#feature-box img{
+    float: right;
+    cursor: pointer;
+}
+
+/* Feature box ICON Night Theme Color */
+body.night-theme #feature-box img#night-mode-button{
+    filter: invert(100%);
 }
 
 h1{
