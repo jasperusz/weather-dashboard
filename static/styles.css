@@ -1,5 +1,6 @@
 /* Formatting */
 * {
+    box-sizing: border-box;
     font-family: "Nunito Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -14,6 +15,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     min-height: 100vH;
 }
 
@@ -30,18 +32,22 @@ body.night-theme{
 }
 
 #main-content {
-    max-width: 100vh;
+    max-width: 100%;
     max-height: 100%;
 }
+
 /* App container adjustments */
 #feature-box {
-    width: 800px;
-    height: 400px;
-    padding: 30px;
-    background-color: #FCFFF7;
-    color: #324a5f;
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    margin: 0 auto;
+    position: relative;
     border-radius: 12px;
-    box-sizing: border-box;
+    box-sizing: border-box; 
+    overflow: hidden;
+    color: #324a5f;
+    background-color: #FCFFF7;
 }
 
 /* Feature box Night Theme Colors */
@@ -51,8 +57,10 @@ body.night-theme #feature-box{
 }
 
 /* Night/Light mode adjustments */
-#feature-box img{
-    float: right;
+#feature-box img#night-mode-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
 }
 
@@ -78,11 +86,14 @@ h1{
     display: flex; 
     align-items: center; 
     gap: 10px;
-    width: 80%;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 #city_name {
     flex: 1;
+    min-width: 0;
     padding: 12px;
     font-size: 18px;
     border: 2px solid #20A4F3;
@@ -117,21 +128,26 @@ label {
     width: 100%;
     gap: 15px;
     justify-content: center;
+    align-content: center;
     margin-top: 40px;
+    flex-wrap: wrap;
 }
 
 /* Cards Formatting and appearance */
 .card{
     display: flex;
+    flex: 1;
     height: 120px;
     width: 150px;
+    min-width: 100px;
     background-color: #20A4F3;
-    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     border-radius: 12px;
     border: solid 2px #20A4F3;
     padding: 8px;
     transition: 0.5s ease-out;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .card#city{
@@ -153,15 +169,21 @@ label {
 #weather-results p {
     animation: slideInReveal 0.8s ease-out forwards;
     opacity: 0;
-    font-size: 21px;
+    font-size: 18px;
     text-align: center;
     color: #FCFFF7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 /* WeatherIcon Size */
 #weather-results img{
     width: 40px;
     height: 40px;
+    flex-shrink: 0;
 }
 
 /* Each line revealing in a different delay */
@@ -181,5 +203,34 @@ label {
     to {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+/* Responsive: Tablet */
+@media (max-width: 768px) {
+    #search-box form {
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch;
+    }
+    #city_name, input[type="submit"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .card {
+        width: 45%;
+        height: 100px;;
+    }
+}
+
+/* Responsive: Phone */
+@media (max-width: 480px) {
+    .card {
+        flex: none;
+        width: 100%;
+        height: auto;
+        min-height: 90px;
+    }
+    #weather-results p {
+        font-size: 12px;
     }
 }

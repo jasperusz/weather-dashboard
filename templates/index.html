@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Dashboard</title>
+    <title>City Weather</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,7 @@
     <div id="main-content">
         <div id="feature-box">
             <img src="{{ url_for('static', filename = 'img/moon-32.png')}}" alt="Night-Mode" id="night-mode-button" onclick="nightMode('night')">
-            <h1>Weather Dashboard</h1> 
+            <h1>City Weather</h1> 
             <div id="search-box">
                 <form action="/weather" method="GET">
                     <label for="city_name">Search City:</label>
