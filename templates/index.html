@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>City Weather</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
@@ -13,9 +13,18 @@
 <body>
     <div id="main-content">
         <div id="feature-box">
+            {% if user %}
+            <p id="logout-button"><a href="{{ url_for('logout') }}">Logout</a></p>
+            {% else %}
+            <p id="logout-button"></p>
+            {% endif %}
             <img src="{{ url_for('static', filename = 'img/moon-32.png')}}" alt="Night-Mode" id="night-mode-button" onclick="nightMode('night')">
-            <h1>City Weather</h1> 
-            <div id="search-box">
+            <h1>City Weather</h1>
+            <div class="user-text">
+                {% if user %}
+                <p>Hello, {{ user['name'] }}!</p> 
+                <p>Which city weather do you want to check?</p>
+                <div id="search-box">
                 <form action="/weather" method="GET">
                     <label for="city_name">Search City:</label>
                     <input type="text" id="city_name" name="city_name" required>
@@ -31,6 +40,11 @@
                 <div class="card"><p> <strong>Weather Condition:</strong> {{ city_weather.weather_description | capitalize }}</p></div>
                 <div class="card"><p> <strong>Humidity:</strong> {{ city_weather.humidity }}%</p></div>
                 <div class="card"><p> <strong>Wind Speed:</strong> {{ city_weather.winds }} m/s</p></div>
+                {% endif %}
+            </div>
+                {% else %}
+                <p> Hello, Guest!, please login to check the weather of your city.</p>
+                <a href="{{ url_for('login') }}" class="login-button">Login with Google</a>
                 {% endif %}
             </div>
         </div>

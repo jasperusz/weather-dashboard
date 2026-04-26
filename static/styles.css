@@ -7,6 +7,13 @@
     margin: 0;
     padding: 0;
 }
+
+/* Link decoration removal */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* Background and containers sizing */
 body{
     background: linear-gradient(-45deg, #2f6690, #20A4F3, #54DEFD, #d3d3d3);
@@ -50,9 +57,27 @@ body.night-theme{
     background-color: #FCFFF7;
 }
 
+#feature-box p{
+    font-size: 18px;
+    color: #324a5f;
+    text-align: center;
+}
+
+.user-text a{
+    color: #20A4F3;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
 /* Feature box Night Theme Colors */
 body.night-theme #feature-box{
     background-color: #324a5f;
+    color: #20A4F3;
+}
+
+body.night-theme #feature-box p{
     color: #20A4F3;
 }
 
@@ -67,6 +92,17 @@ body.night-theme #feature-box{
 /* Feature box ICON Night Theme Color */
 body.night-theme #feature-box img#night-mode-button{
     filter: invert(100%);
+}
+
+#feature-box #logout-button{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+#body.night-theme #feature-box #logout-button{
+    color: #20A4F3;
 }
 
 h1{
@@ -177,6 +213,10 @@ label {
     justify-content: center;
     gap: 8px;
     flex-wrap: wrap;
+}
+
+body.night-theme #weather-results p {
+    color: #FCFFF7;
 }
 
 /* WeatherIcon Size */
