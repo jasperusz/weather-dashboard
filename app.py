@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy import Integer, Column, String, Float, DateTime
+from sqlalchemy import Integer, Column, String, Float, DateTime, create_engine
 from datetime import datetime
 from main import get_weather_data
 from authlib.integrations.flask_client import OAuth
@@ -17,8 +17,14 @@ class Base(DeclarativeBase):
 
 db = SQLAlchemy(model_class=Base)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///weather.db" # SQLite database and location
 app.config["SECRET_KEY"] = os.getenv('SECRET_KEY')
+USER = os.getenv('USER')
+PASSWORD = os.getenv("PASSWORD")
+HOST = os.getenv("HOST")
+PORT = os.getenv("PORT")
+DBNAME = os.getenv("DBNAME")
+DATABASE_URL = f"postgresql+psycopg2://{USER}:{PASSWORD}@{HOST}:{PORT}/{DBNAME}?sslmode=require"
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 
 db.init_app(app)
 
