@@ -32,7 +32,6 @@
                 </form>
             </div>
             <div id="weather-results">
-                
                 {% if city_weather %}
                 <div class="card" id="city"><p>{{ city_name }}</p>
                     <p><img src="https://flagcdn.com/w40/{{ city_weather.city_country | lower }}.png" alt="country-icon"></p></div>
@@ -45,6 +44,12 @@
                 {% else %}
                 <p> Hello, Guest!, please login to check the weather of your city.</p>
                 <a href="{{ url_for('login') }}" class="login-button">Login with Google</a>
+                {% endif %}
+
+                {% if user %}
+                <p><a href="{{ url_for('history') }}">Check your Search History</a></p>
+                {% else %}
+                <p></p>
                 {% endif %}
             </div>
         </div>

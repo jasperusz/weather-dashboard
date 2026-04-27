@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Weather</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='history.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="main-content">
+        <div id="feature-box">
+            <img src="{{ url_for('static', filename = 'img/moon-32.png')}}" alt="Night-Mode" id="night-mode-button" onclick="nightMode('night')">
+            <h1>City Weather</h1>
+            <div class="user-text">
+                {% if user %}
+                <p>Hello, {{ user['name'] }}!</p> 
+                <p>Here's your weather search history:</p>
+                <div id="weather-results">  
+                        {% for search in search_history %}
+                        <div class="search-row">
+                            <div class="card" id="city"><p>{{ search.city }}</p>
+                                <p><img src="https://flagcdn.com/w40/{{ search.city_country | lower }}.png" alt="country-icon"></p></div>    
+                            <div class="card"><p> <strong>Temperature:</strong> {{ search.temperature | round(1) }}ºC <img src="https://openweathermap.org/img/wn/{{ search.weather_icon }}@2x.png" alt="weather-icon"></p></div>
+                            <div class="card"><p> <strong>Weather Condition:</strong> {{ search.weather_description | capitalize }}</p></div>
+                            <div class="card"><p> <strong>Searched At:</strong> {{ search.searched_at.strftime('%Y-%m-%d %H:%M:%S') }}</p></div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <p><a href="{{ url_for('index') }}">Search for another weather</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

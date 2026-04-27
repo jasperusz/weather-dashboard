@@ -49,6 +49,10 @@ class Search(Base):
     city = Column(String(50), nullable=False)
     temperature = Column(Float, nullable=False)
     searched_at = Column(DateTime, nullable=False)
+    weather_description = Column(String(100), nullable=False)
+    weather_icon = Column(String(10), nullable=False)
+    city_country = Column(String(10), nullable=False)
+    user_email = Column(String(100), nullable=True)
 
 # Create route to index.html through app.route
 @app.route('/')
@@ -77,15 +81,38 @@ def auth_callback():
     session['email'] = user_info['email']
     return redirect(url_for('index'))
 
+# Create route to get weather search history
+@app.route('/history')
+def history():
+    if session.get('user'):
+        search_history = db.session.execute(
+            db.select(Search).where(
+                Search.user_email == session.get('email')).order_by(
+                    Search.searched_at.desc())).scalars().all()
+        return render_template('history.html', search_history=search_history, user=session.get('user'))
+    else:
+        return redirect(url_for('index'))
+
 # Use GET method shortcut "app.get" to get /weather from index form
 @app.get('/weather')
 def get_weather():
     city_name = request.args.get('city_name')
     city_weather = get_weather_data(city_name)
     current_time = datetime.now()
+    user_email = session.get('email')
     # If to check if city_weather isnt empty or wrong.
     if city_weather is not None:
-        search = Search(city=city_name, temperature=city_weather['temperature'], searched_at=current_time)
+        weather_description = city_weather['weather_description']
+        weather_icon = city_weather['weather_icon']
+        city_country = city_weather['city_country']
+        search = Search(
+            city=city_name, 
+            temperature=city_weather['temperature'], 
+            searched_at=current_time, 
+            weather_description=weather_description, 
+            weather_icon=weather_icon, 
+            city_country=city_country, 
+            user_email=user_email)
         db.session.add(search)
         db.session.commit()
     return render_template('index.html', city_name=city_name, city_weather=city_weather, user=session.get('user'))

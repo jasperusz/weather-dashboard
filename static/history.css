@@ -1,0 +1,285 @@
+/* Formatting */
+* {
+    box-sizing: border-box;
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+}
+
+/* Link decoration removal */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Background and containers sizing */
+body{
+    background: linear-gradient(-45deg, #2f6690, #20A4F3, #54DEFD, #d3d3d3);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vH;
+}
+
+/* Background Night Theme Colors */
+body.night-theme{
+    background: linear-gradient(-45deg, #051923, #003554, #324a5f, #a69cac);
+    background-size: 400% 400%;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+#main-content {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* App container adjustments */
+#feature-box {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 12px;
+    box-sizing: border-box; 
+    overflow: hidden;
+    color: #324a5f;
+    background-color: #FCFFF7;
+}
+
+#feature-box p{
+    font-size: 18px;
+    color: #324a5f;
+    text-align: center;
+}
+
+.user-text a{
+    color: #20A4F3;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+/* Feature box Night Theme Colors */
+body.night-theme #feature-box{
+    background-color: #324a5f;
+    color: #20A4F3;
+}
+
+body.night-theme #feature-box p{
+    color: #20A4F3;
+}
+
+/* Night/Light mode adjustments */
+#feature-box img#night-mode-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Feature box ICON Night Theme Color */
+body.night-theme #feature-box img#night-mode-button{
+    filter: invert(100%);
+}
+
+#feature-box #logout-button{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+#body.night-theme #feature-box #logout-button{
+    color: #20A4F3;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+}
+
+/* Search box formatting */
+#search-box{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+#search-box form{
+    display: flex; 
+    align-items: center; 
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+#city_name {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    font-size: 18px;
+    border: 2px solid #20A4F3;
+    border-radius: 8px;
+    outline: none;
+}
+
+input[type="submit"] {
+    padding: 12px 25px;
+    font-size: 18px;
+    background-color: #20A4F3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #1a8cd1;
+}
+
+label {
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Weather Results Appearence */
+#weather-results{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+    align-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.search-row{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* Cards Formatting and appearance */
+.card{
+    display: flex;
+    flex: 1;
+    height: 120px;
+    width: 150px;
+    min-width: 100px;
+    background-color: #20A4F3;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 12px;
+    border: solid 2px #20A4F3;
+    padding: 8px;
+    transition: 0.5s ease-out;
+    overflow: hidden;
+}
+
+.card#city{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card#city img{
+    height: 30px;
+}
+
+.card:hover{
+    border-color: #2f6690;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Font formatting and reveal animation */
+#weather-results p {
+    animation: slideInReveal 0.8s ease-out forwards;
+    opacity: 0;
+    font-size: 18px;
+    text-align: center;
+    color: #FCFFF7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+body.night-theme #weather-results p {
+    color: #FCFFF7;
+}
+
+/* WeatherIcon Size */
+#weather-results img{
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+/* Each line revealing in a different delay */
+#weather-results p:nth-child(1) { animation-delay: 0.1s; }
+#weather-results p:nth-child(2) { animation-delay: 0.3s; }
+#weather-results p:nth-child(3) { animation-delay: 0.5s; }
+#weather-results p:nth-child(4) { animation-delay: 0.7s; }
+#weather-results p:nth-child(5) { animation-delay: 0.9s; }
+#weather-results p:nth-child(6) { animation-delay: 1.2s; }
+
+/* Animation keyframe */
+@keyframes slideInReveal {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+/* Responsive: Tablet */
+@media (max-width: 768px) {
+    #search-box form {
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch;
+    }
+    #city_name, input[type="submit"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .card {
+        width: 45%;
+        height: 100px;;
+    }
+}
+
+/* Responsive: Phone */
+@media (max-width: 480px) {
+    .card {
+        flex: none;
+        width: 100%;
+        height: auto;
+        min-height: 90px;
+    }
+    #weather-results p {
+        font-size: 12px;
+    }
+}
