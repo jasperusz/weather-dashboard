@@ -39,6 +39,8 @@
                 <div class="card"><p> <strong>Weather Condition:</strong> {{ city_weather.weather_description | capitalize }}</p></div>
                 <div class="card"><p> <strong>Humidity:</strong> {{ city_weather.humidity }}%</p></div>
                 <div class="card"><p> <strong>Wind Speed:</strong> {{ city_weather.winds }} m/s</p></div>
+                {% elif city_weather == None %}
+                <p>Sorry, this city is not in our database or is invalid. Please try another city.</p>
                 {% endif %}
             </div>
                 {% else %}
